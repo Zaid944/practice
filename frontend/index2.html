@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input id="title" type="text" placeholder="title" />
+        <input id="description" type="text" placeholder="description" />
+        <button onclick="addTodo()">Add Todo</button>
+        <div id="container"></div>
+        <script>
+            console.log("executing");
+            let globalId = 1;
+            function createChild(title, description, index) {
+                const outerDiv = document.createElement("div");
+
+                outerDiv.appendChild(document.createElement("div"));
+                outerDiv.appendChild(document.createElement("div"));
+                outerDiv.appendChild(document.createElement("button"));
+
+                outerDiv.children[0].innerHTML = title;
+                outerDiv.children[1].innerHTML = description;
+                outerDiv.children[2].innerHTML = "Todo";
+
+                outerDiv.children[2].addEventListener("click", function (e) {
+                    if (outerDiv.children[2].innerHTML == "Todo") {
+                        outerDiv.children[2].innerHTML = "Done";
+                    } else {
+                        outerDiv.children[2].innerHTML = "Todo";
+                    }
+                });
+
+                outerDiv.id = index;
+                return outerDiv;
+            }
+            function updateDomAccordingToState(state, globalStart) {
+                document.getElementById("container").innerHTML = "";
+                let innerHtmlll = "";
+                for (let i = 0; i < state.length; i++) {
+                    const child = createChild(
+                        state[i].title,
+                        state[i].description,
+                        globalStart++
+                    );
+                    document.getElementById("container").append(child);
+                }
+            }
+            updateDomAccordingToState(
+                [
+                    {
+                        title: "yay",
+                        description: "yooo",
+                    },
+                    {
+                        title: "yay",
+                        description: "yooo",
+                    },
+                    {
+                        title: "yay",
+                        description: "yooo",
+                    },
+                    {
+                        title: "yay",
+                        description: "yooo",
+                    },
+                ],
+                1
+            );
+            function addTodo() {
+                const title = document.getElementById("title").value;
+                const description =
+                    document.getElementById("description").value;
+                const container = document.getElementById("container");
+                // console.log(title);
+                // console.log(description);
+                const outerDiv = createChild(title, description);
+                container.appendChild(outerDiv);
+            }
+            const abc = window.setInterval(async function () {
+                const data = await fetch(
+                    "https://sum-server.100xdevs.com/todos"
+                );
+                const resp = await data.json();
+                updateDomAccordingToState(resp.todos);
+            }, 5000);
+            //clearing as soon as interval
+            //react -> existing state -> virtual dom
+            clearInterval(abc);
+            //react+dom
+            
+        </script>
+    </body>
+</html>
