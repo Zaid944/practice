@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div id="parentDiv"></div>
+        <!-- <button onclick="onButtonPress()" id="btn">Counter 0</button> -->
+    </body>
+
+    <script>
+        let state = {
+            count: 0,
+        };
+
+        function onButtonPress() {
+            state.count++;
+            buttonComponentRerender();
+        }
+
+        function buttonComponentRerender() {
+            const parentDiv = document.getElementById("parentDiv");
+            parentDiv.innerHTML = "";
+            const buttonElement = buttonComponent(state.count);
+            parentDiv.appendChild(buttonElement);
+        }
+
+        function buttonComponent(count) {
+            let button = document.createElement("button");
+            button.setAttribute("onclick", "onButtonPress()");
+            button.innerHTML = `count ${count}`;
+            // buttonComponentRerender();
+            // console.log(button);
+            return button;
+        }
+
+        buttonComponentRerender();
+        // function onButtonPress() {
+        //     const currentValue = document.getElementById("btn").innerHTML;
+        //     console.log(currentValue.split(" "));
+        //     const currentCounter = currentValue.split(" ")[1];
+        //     const newCounter = parseInt(currentCounter) + 1;
+        //     document.getElementById("btn").innerHTML = "Counter " + newCounter;
+        // }
+    </script>
+</html>
