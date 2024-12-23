@@ -1,3 +1,6 @@
 [submodule "app-p4/7.5"]
 	path = app-p4/7.5
 	url = https://github.com/100xdevs-cohort-2/7.4.git
+[submodule "paytm-2"]
+	path = paytm-2
+	url = https://github.com/100xdevs-cohort-2/paytm.git
