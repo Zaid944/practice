@@ -116,7 +116,7 @@ function useDebounce(value, timeout) {
     useEffect(() => {
         let key = setTimeout(() => {
             setDebouncedValue(value);
-        }, 5000);
+        }, timeout);
 
         return () => {
             clearTimeout(key);
