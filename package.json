@@ -1,0 +1,12 @@
+{
+  "name": "100x-devs-cohort",
+  "version": "1.0.0",
+  "description": "https://stackoverflow.com/questions/71311615/why-isnt-forked-repository-showing-contributions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
