@@ -16,7 +16,7 @@ async function insertUser(
             lastName,
         },
     });
-    prisma.user
+    
     console.log(res);
 }
 
