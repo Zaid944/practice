@@ -16,7 +16,7 @@ async function insertUser(
             lastName,
         },
     });
-    
+
     console.log(res);
 }
 
@@ -27,3 +27,9 @@ async function seeUser() {
 
 // insertUser("zaidddd4@gmail.com", "password", "zaid", "akhter");
 seeUser();
+
+// cold start problem
+// warm pool
+// aws lambda
+// google cloud functions
+// cloudfare workers
